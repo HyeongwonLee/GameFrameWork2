@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include <SDL_image.h>
 #include <iostream>
+#include "TextureManager.h"
 
 class Game
 {
@@ -17,11 +18,14 @@ public:
 	void clean();
 	bool running() { return m_bRunning; }
 private:
-	SDL_Texture * m_pTexture;
-	SDL_Rect m_sourceRectangle;
-	SDL_Rect m_destinationRectangle;
+	//SDL_Texture * m_pTexture;
+	//SDL_Rect m_sourceRectangle;
+	//SDL_Rect m_destinationRectangle;
 
 	SDL_Window * m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	bool m_bRunning;
+
+	int m_currentFrame;
+	TextureManager m_textureManager;
 };
