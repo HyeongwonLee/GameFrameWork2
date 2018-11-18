@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "InputHandler.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -47,23 +48,15 @@ void Game::update()
 }
 void Game::clean()
 {
-	std::cout << "cleaning game\n";
-	SDL_DestroyWindow(m_pWindow);
-	SDL_DestroyRenderer(m_pRenderer);
-	SDL_Quit();
+	TheInputHandler::Instance()->clean();
 }
 void Game::handleEvent()
 {
-	SDL_Event event;
-	if (SDL_PollEvent(&event))
-	{
-		switch (event.type)
-		{
-		case SDL_QUIT:
-			m_bRunning = false;
-			break;
-		default:
-			break;
-		}
-	}
+	TheInputHandler::Instance()->update();
+
+}
+
+void Game::Quit()
+{
+	m_bRunning = false;
 }
